@@ -92,7 +92,7 @@ The repository includes a Render Blueprint for a free public preview with
 After deployment, run:
 
 ```bash
-PREVIEW_BASE_URL=https://algorithmic-accountability-preview.onrender.com npm run preview:smoke
+PREVIEW_BASE_URL=https://algorithmic-accountability-preview-6qmt.onrender.com npm run preview:smoke
 ```
 
 The smoke test covers the portfolio, config endpoint, demo health endpoint, dashboard
