@@ -1,10 +1,10 @@
 # Public preview uptime and demo-integrity checks
 
-The public Render demo is hosted at:
+The public Render demo is hosted in the Galinsky-2028 Render workspace (free plan, service `algorithmic-accountability-preview`, id `srv-dbsvkurl550s739kbae0`, auto-deploys from `main` after checks pass) at:
 
-https://algorithmic-accountability-preview.onrender.com
+https://algorithmic-accountability-preview-6qmt.onrender.com
 
-A GitHub Actions workflow (`.github/workflows/preview-smoke.yml`) runs after successful CI on `main`, on a 15-minute schedule and on manual dispatch. It invokes `scripts/preview-smoke.mjs` from a network-enabled runner. Unlike a green Render deploy, these tests request the actual HTTPS endpoints and verify **fictional demo content**.
+A GitHub Actions workflow (`.github/workflows/preview-smoke.yml`) runs after successful CI on `main`, every 6 hours and on manual dispatch. (The schedule was reduced from 15 minutes so the probe does not keep the Render free instance awake continuously and exhaust the workspace's shared free instance-hours.) It invokes `scripts/preview-smoke.mjs` from a network-enabled runner. Unlike a green Render deploy, these tests request the actual HTTPS endpoints and verify **fictional demo content**.
 
 The smoke monitor checks nine routes: the homepage, public configuration, demonstration engine-health, dashboard API and five individual deployment detail pages. It requires an explicit `demo: true` and `fictional: true` response; the dashboard must show five fictional deployments. An unauthorized, missing, stale or real-data response fails the run. Failures surface in GitHub Actions. GitHub scheduled jobs can be delayed or skipped and are not a guaranteed 24/7 SLA or paging service.
 

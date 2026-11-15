@@ -3,7 +3,10 @@ name: Public preview smoke monitor
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/15 * * * *"
+    # Every 6 hours. Render free instances sleep after ~15 idle minutes and
+    # the workspace shares 750 free instance-hours per month; a 15-minute
+    # probe would keep this service awake continuously.
+    - cron: "17 */6 * * *"
   workflow_run:
     workflows: ["CI"]
     types: [completed]
@@ -28,6 +31,6 @@ jobs:
           node-version: "24"
       - name: Verify public preview pages and fictional data markers
         env:
-          PREVIEW_BASE_URL: https://algorithmic-accountability-preview.onrender.com
+          PREVIEW_BASE_URL: https://algorithmic-accountability-preview-6qmt.onrender.com
           SMOKE_ATTEMPTS: "4"
         run: node scripts/preview-smoke.mjs
