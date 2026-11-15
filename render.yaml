@@ -5,10 +5,10 @@ services:
   - type: web
     name: algorithmic-accountability-preview
     runtime: node
-    repo: https://github.com/neophilism/Algorithmic-Accountability
+    repo: https://github.com/Galinsky-2028/Algorithmic-Accountability
     region: virginia
     plan: free
-    buildCommand: npm install && npm run build
+    buildCommand: npm ci && npm run build
     startCommand: npm run start -w @algorithmic-accountability/web -- --hostname 0.0.0.0 --port $PORT
     autoDeployTrigger: checksPass
     healthCheckPath: /api/engine-health

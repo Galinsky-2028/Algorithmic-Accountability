@@ -1,7 +1,7 @@
 # Architecture
 
 Algorithmic Accountability is a thin application of the
-[Compliance, Authorization & Immutable Audit Engine](https://github.com/neophilism/Compliance-Authorization-Immutable-Audit-Engine).
+[Compliance, Authorization & Immutable Audit Engine](https://github.com/Galinsky-2028/Compliance-Authorization-Immutable-Audit-Engine).
 
 The application owns algorithmic-accountability vocabulary, policy bundles,
 assessment schemas, workflow composition, presentation, and demonstration
