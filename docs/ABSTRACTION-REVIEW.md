@@ -27,3 +27,8 @@ No use of the fictional demo establishes that an external CAIAE service is live 
 3. Real engine: configure CAIAE endpoint, organization, token and operator access secret via provider secret storage; validate end-to-end access denial and legitimate scoped read.
 4. Engine Room: observe real GitHub PR state and real Render health/deploy telemetry independently. A passing demo must never be labeled production-ready.
 5. Never ship secrets in the repository; document the upstream engine pin and deploy revision.
+
+
+## Fictional demo-tenant provisioning (real-data mode)
+
+`AA_PROVISION_DEMO_TENANT=true` (with demo mode off and the CAIAE operator configured) makes the web app's Next.js startup hook (`apps/web/instrumentation.ts` → `lib/provision.ts`) create three fictional algorithmic systems, model versions and deployment contexts. It uses the inventory package, and therefore `@caiae/sdk` only. Records carry stable `aa-demo-tenant:*` external references and are skipped when present, so restarts and partial failures do not duplicate data. The hook retries while a free-plan engine wakes, logs only counts, and never blocks or crashes the server. Use it only against fictional demonstration tenants.
